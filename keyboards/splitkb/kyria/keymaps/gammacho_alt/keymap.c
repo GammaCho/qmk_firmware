@@ -230,6 +230,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING("|");
             }
             break;
+        case KC_UNDS:
+            if (record->event.pressed) {
+                _delay_ms(15);
+            }
+            break;
         case CC_UNDS:
             if (record->event.pressed) {
                 SEND_STRING("_");
