@@ -397,7 +397,7 @@ void keyboard_post_init_user(void) {
         }
         return 0;
   }
-  defer_exec(500, get_host_os, NULL);
+  defer_exec(1000, get_host_os, NULL);
 }
 
 void housekeeping_task_user(void) {
