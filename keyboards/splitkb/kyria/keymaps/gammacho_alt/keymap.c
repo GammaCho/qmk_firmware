@@ -90,9 +90,11 @@ enum custom_keycodes {
     CC_LT,
     CC_GT,
     CC_LCBR,
-    CC_RCBR
+    CC_RCBR,
+    CC_TILD
 };
 
+int shifted_key_delay = 30;
 bool drag_scrolling = false;
 bool ring_scrolling = false;
 
@@ -172,92 +174,167 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case CC_EXLM:
             if (record->event.pressed) {
-                SEND_STRING("!");
+                //KC_EXLM : !
+                register_code(KC_LSFT);
+                wait_ms(shifted_key_delay);
+                tap_code(KC_1);
+                unregister_code(KC_LSFT);
+                //SEND_STRING("!");
+
             }
             break;
         case CC_AT:
             if (record->event.pressed) {
-                SEND_STRING("@");
+                //KC_AT : @
+                register_code(KC_LSFT);
+                wait_ms(shifted_key_delay);
+                tap_code(KC_2);
+                unregister_code(KC_LSFT);
+                //SEND_STRING("@");
             }
             break;
         case CC_HASH:
             if (record->event.pressed) {
-                SEND_STRING("#");
+                register_code(KC_LSFT);
+                wait_ms(shifted_key_delay);
+                tap_code(KC_3);
+                unregister_code(KC_LSFT);
+                //SEND_STRING("#");
             }
             break;
         case CC_DLR:
             if (record->event.pressed) {
-                SEND_STRING("$");
+                register_code(KC_LSFT);
+                wait_ms(shifted_key_delay);
+                tap_code(KC_4);
+                unregister_code(KC_LSFT);
+                //SEND_STRING("$");
             }
             break;
         case CC_PERC:
             if (record->event.pressed) {
-                SEND_STRING("%");
+                register_code(KC_LSFT);
+                wait_ms(shifted_key_delay);
+                tap_code(KC_5);
+                unregister_code(KC_LSFT);
+                //SEND_STRING("%");
             }
             break;
         case CC_CIRC:
             if (record->event.pressed) {
-                SEND_STRING("^");
+                register_code(KC_LSFT);
+                wait_ms(shifted_key_delay);
+                tap_code(KC_6);
+                unregister_code(KC_LSFT);
+                //SEND_STRING("^");
             }
             break;
         case CC_AMPR:
             if (record->event.pressed) {
-                SEND_STRING("&");
+                register_code(KC_LSFT);
+                wait_ms(shifted_key_delay);
+                tap_code(KC_7);
+                unregister_code(KC_LSFT);
+                //SEND_STRING("&");
             }
             break;
         case CC_ASTR:
             if (record->event.pressed) {
-                SEND_STRING("*");
+                register_code(KC_LSFT);
+                wait_ms(shifted_key_delay);
+                tap_code(KC_8);
+                unregister_code(KC_LSFT);
+                //SEND_STRING("*");
             }
             break;
         case CC_LPRN:
             if (record->event.pressed) {
-                SEND_STRING("(");
+                register_code(KC_LSFT);
+                wait_ms(shifted_key_delay);
+                tap_code(KC_9);
+                unregister_code(KC_LSFT);
+                //SEND_STRING("(");
             }
             break;
         case CC_RPRN:
             if (record->event.pressed) {
-                SEND_STRING(")");
+                register_code(KC_LSFT);
+                wait_ms(shifted_key_delay);
+                tap_code(KC_0);
+                unregister_code(KC_LSFT);
+                //SEND_STRING(")");
             }
             break;
         case CC_PLUS:
             if (record->event.pressed) {
-                SEND_STRING("+");
+                register_code(KC_LSFT);
+                wait_ms(shifted_key_delay);
+                tap_code(KC_EQL);
+                unregister_code(KC_LSFT);
+                //SEND_STRING("+");
             }
             break;
         case CC_PIPE:
             if (record->event.pressed) {
-                SEND_STRING("|");
-            }
-            break;
-        case KC_UNDS:
-            if (record->event.pressed) {
-                SEND_STRING("_");
+                register_code(KC_LSFT);
+                wait_ms(shifted_key_delay);
+                tap_code(KC_BSLS);
+                unregister_code(KC_LSFT);
+                //SEND_STRING("|");
             }
             break;
         case CC_UNDS:
             if (record->event.pressed) {
-                SEND_STRING("_");
+                register_code(KC_LSFT);
+                wait_ms(shifted_key_delay);
+                tap_code(KC_MINS);
+                unregister_code(KC_LSFT);
+                //SEND_STRING("_");
             }
             break;
         case CC_LT:
             if (record->event.pressed) {
-                SEND_STRING("<");
+                register_code(KC_LSFT);
+                wait_ms(shifted_key_delay);
+                tap_code(KC_COMM);
+                unregister_code(KC_LSFT);
+                //SEND_STRING("<");
             }
             break;
         case CC_GT:
             if (record->event.pressed) {
-                SEND_STRING(">");
+                register_code(KC_LSFT);
+                wait_ms(shifted_key_delay);
+                tap_code(KC_DOT);
+                unregister_code(KC_LSFT);
+                //SEND_STRING(">");
             }
             break;
         case CC_LCBR:
             if (record->event.pressed) {
-                SEND_STRING("{");
+                register_code(KC_LSFT);
+                wait_ms(shifted_key_delay);
+                tap_code(KC_LBRC);
+                unregister_code(KC_LSFT);
+                //SEND_STRING("{");
             }
             break;
         case CC_RCBR:
             if (record->event.pressed) {
-                SEND_STRING("}");
+                register_code(KC_LSFT);
+                wait_ms(shifted_key_delay);
+                tap_code(KC_RBRC);
+                unregister_code(KC_LSFT);
+                //SEND_STRING("}");
+            }
+            break;
+        case CC_TILD:
+            if (record->event.pressed) {
+                register_code(KC_LSFT);
+                wait_ms(shifted_key_delay);
+                tap_code(KC_GRV);
+                unregister_code(KC_LSFT);
+                //SEND_STRING("}");
             }
             break;
     }
@@ -279,15 +356,26 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 tap_dance_action_t tap_dance_actions[] = {
     // Tap once for space, twice for Underscore
     [TD_BASE] = ACTION_TAP_DANCE_DOUBLE(WINDOWS, MAC),
-    [TD_SP]   = ACTION_TAP_DANCE_DOUBLE(KC_SPC, LSFT(KC_MINS)),
-    [TD_LBK]  = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, LSFT(KC_LBRC)),
-    [TD_RBK]  = ACTION_TAP_DANCE_DOUBLE(KC_RBRC, LSFT(KC_RBRC)),
-    [TD_LPR]  = ACTION_TAP_DANCE_DOUBLE(LSFT(KC_9), LSFT(KC_COMM)),
-    [TD_RPR]  = ACTION_TAP_DANCE_DOUBLE(LSFT(KC_0), LSFT(KC_DOT)),
+    [TD_SP]   = ACTION_TAP_DANCE_DOUBLE(KC_SPC, LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(KC_MINS))))))))))),
+    [TD_LBK]  = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(KC_LBRC))))))))))),
+    [TD_RBK]  = ACTION_TAP_DANCE_DOUBLE(KC_RBRC, LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(KC_RBRC))))))))))),
+    [TD_LPR]  = ACTION_TAP_DANCE_DOUBLE(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(KC_9)))))))))), LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(KC_COMM))))))))))),
+    [TD_RPR]  = ACTION_TAP_DANCE_DOUBLE(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(KC_0)))))))))), LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(LSFT(KC_DOT))))))))))),
     [TD_LYR]  = ACTION_TAP_DANCE_DOUBLE(TO(WINDOWS), TO(MAC)),
    // [MJ]      = ACTION_TAP_DANCE_DOUBLE(KC_J, KC_J),
    // [WJ]      = ACTION_TAP_DANCE_DOUBLE(KC_J, KC_J),
 };
+
+//void SPC_UNDS_test(tap_dance_state_t *state, void *user_data) {
+//	if (state->count == 1) {
+//		tap_code(KC_LPRN);
+//	} else if (state->count == 2) {
+//		tap_code(KC_LBRC);
+//	} else if (state->count == 3) {
+//		tap_code16(S(KC_LBRC));
+//	}
+//}
+
 
 enum combos {
     CO_MESC,
@@ -472,14 +560,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_M_NUM] = LAYOUT(
      KC_TAB,  CC_EXLM, CC_AT,   CC_HASH, CC_DLR,  CC_PERC,                                         CC_CIRC, CC_AMPR, CC_ASTR, CC_LPRN, CC_RPRN, KC_BSPC,
      _______, KC_1,    KC_2,    KC_3 ,   KC_4,    KC_5,                                            KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______ ,
-     KC_LSFT, KC_GRV,  KC_TILD, CC_PLUS, KC_MINS, CC_ASTR, KC_SLSH, _______,     _______, _______, KC_BSLS, KC_EQL,  KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+     KC_LSFT, KC_GRV,  CC_TILD, CC_PLUS, KC_MINS, CC_ASTR, KC_SLSH, _______,     _______, _______, KC_BSLS, KC_EQL,  KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
                                 _______, _______, _______, _______, _______,     _______, _______, _______, _______, XXXXXXX
     ),
 
     [_W_NUM] = LAYOUT(
      KC_TAB,  CC_EXLM, CC_AT,   CC_HASH, CC_DLR,  CC_PERC,                                         CC_CIRC, CC_AMPR, CC_ASTR, CC_LPRN, CC_RPRN, KC_BSPC,
      _______, KC_1,    KC_2,    KC_3 ,   KC_4,    KC_5,                                            KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______ ,
-     KC_LSFT, KC_GRV,  KC_TILD, CC_PLUS, KC_MINS, CC_ASTR, KC_SLSH, _______,     _______, _______, KC_BSLS, KC_EQL,  KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+     KC_LSFT, KC_GRV,  CC_TILD, CC_PLUS, KC_MINS, CC_ASTR, KC_SLSH, _______,     _______, _______, KC_BSLS, KC_EQL,  KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
                                 _______, _______, _______, _______, _______,     _______, _______, _______, _______, XXXXXXX
     ),
 
