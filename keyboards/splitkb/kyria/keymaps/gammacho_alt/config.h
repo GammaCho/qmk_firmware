@@ -57,6 +57,7 @@
 //#define POINTING_DEVICE_ROTATION_90
 //#define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 180
+//#define TAP_CODE_DELAY
 
 
 // Split OnBoard Controller LED Enable
