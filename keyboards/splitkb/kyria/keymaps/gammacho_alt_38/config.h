@@ -24,7 +24,7 @@
 #    define RGBLIGHT_LIMIT_VAL 150
 #endif
 */
-// Lets you roll mod-tap keys
+// Lets you roll mod-tap keys : NO LONGER USED
 //#define IGNORE_MOD_TAP_INTERRUPT
 
 #define SPLIT_POINTING_ENABLE
@@ -56,7 +56,9 @@
 // Adjust trackpad rotation.
 //#define POINTING_DEVICE_ROTATION_90
 //#define TAPPING_FORCE_HOLD
-#define TAPPING_TERM 180
+#define TAPPING_TERM 200
+#define PERMISSIVE_HOLD
+#define TAPPING_TERM_PER_KEY
 //#define TAP_CODE_DELAY
 
 
@@ -84,3 +86,5 @@
 #define RGBLED_SPLIT {0, 1}
 #define SPLIT_TRANSPORT_MIRROR
 #define SPLIT_LAYER_STATE_ENABLE
+
+#define COMBO_ONLY_FROM_LAYER 0

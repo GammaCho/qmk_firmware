@@ -131,6 +131,35 @@ void shifted_key_delay(int keycode) {
     unregister_code(KC_LSFT);
 };
 
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case HO_LSFT:
+            return 120;
+        case HO_RSFT:
+            return 120;
+        case NV_LSFT:
+            return 130;
+        case MFNC_Q:
+            return 130;
+        case MFNC_P:
+            return 130;
+        case MOU_A:
+            return 130;
+        case NAV_QUO:
+            return 130;
+        case MNUM_SP:
+            return 130;
+        case WFNC_Q:
+            return 130;
+        case WFNC_P:
+            return 130;
+        case WNUM_SP:
+            return 130;
+        default:
+            return TAPPING_TERM;
+    }
+}
+
 // Function to handle key events and enable/disable drag scrolling
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     /*
@@ -174,8 +203,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case NAV_QUO:
             if (record->event.pressed) {
                 //led_t led_usb_state = host_keyboard_led_state();
-                rgblight_setrgb_at(20, 10, 10, 0);
-                rgblight_setrgb_at(20, 10, 10, 1);
+                rgblight_setrgb_at(10, 10, 10, 0);
+                rgblight_setrgb_at(10, 10, 10, 1);
                 //tap_code16(NAV_QUO);  // Send tap.
             }
             break;
@@ -387,58 +416,57 @@ tap_dance_action_t tap_dance_actions[] = {
     //[WJ]      = ACTION_TAP_DANCE_DOUBLE(KC_J, KC_J),
 };
 
-//void SPC_UNDS_test(tap_dance_state_t *state, void *user_data) {
-//	if (state->count == 1) {
-//		tap_code(KC_LPRN);
-//	} else if (state->count == 2) {
-//		tap_code(KC_LBRC);
-//	} else if (state->count == 3) {
-//		tap_code16(S(KC_LBRC));
-//	}
-//}
-
-
 enum combos {
-    CO_MESC,
     CO_WESC,
     CO_CAPS,
     CO_SEMI,
-    CO_MDEL,
     CO_WDEL,
     CO_LANG,
     CO_MIDCLK,
     CO_SCROLL,
-    CO_TO_MAC,
-    CO_TO_WIN,
     NOLOCK,
+    //USE 38 key combo : layer 0 _WINDOWS
+    CO_LAYER,
+    CO_ESC,
+    CO_TAB,
+    CO_BSP,
+    CO_DEL,
+    CO_RTN,
 };
 
-const uint16_t PROGMEM COM_MESC[] = {KC_TAB, MFNC_Q, COMBO_END};
 const uint16_t PROGMEM COM_WESC[] = {KC_TAB, WFNC_Q, COMBO_END};
 const uint16_t PROGMEM COM_CAPS[] = {KC_D, LSFT_F, COMBO_END};
 const uint16_t PROGMEM COM_SEMI[] = {KC_COMM, KC_DOT, COMBO_END};
-const uint16_t PROGMEM COM_MDEL[] = {MFNC_P, KC_BSPC, COMBO_END};
 const uint16_t PROGMEM COM_WDEL[] = {WFNC_P, KC_BSPC, COMBO_END};
 const uint16_t PROGMEM COM_LANG[] = {RSFT_J, KC_K, COMBO_END};
 const uint16_t PROGMEM COM_MIDCLK[] = {KC_BTN1, KC_BTN2, COMBO_END};
 const uint16_t PROGMEM COM_SCROLL[] = {KC_C, KC_V, COMBO_END};
-const uint16_t PROGMEM COM_TO_MAC[] = {KC_U, KC_I, KC_O, WFNC_P, COMBO_END};
-const uint16_t PROGMEM COM_TO_WIN[] = {KC_U, KC_I, KC_O, MFNC_P, COMBO_END};
 const uint16_t PROGMEM COM_NOLOCK[] = {KC_M, KC_COMM, COMBO_END};
+//USE 38 key combo : layer 0 _WINDOWS
+const uint16_t PROGMEM COM_LAYER[] = {KC_U, KC_I, KC_O, WFNC_P, COMBO_END};
+const uint16_t PROGMEM COM_ESC[] = {KC_S, KC_D, LSFT_F, COMBO_END};
+const uint16_t PROGMEM COM_TAB[] = {KC_W, KC_E, KC_R, COMBO_END};
+const uint16_t PROGMEM COM_BSP[] = {KC_U, KC_I, COMBO_END};
+const uint16_t PROGMEM COM_DEL[] = {KC_U, KC_I, KC_O, COMBO_END};
+const uint16_t PROGMEM COM_RTN[] = {RSFT_J, KC_K, KC_L, COMBO_END};
 
 combo_t key_combos[] = {
-  [CO_MESC] = COMBO(COM_MESC, KC_ESC),
   [CO_WESC] = COMBO(COM_WESC, KC_ESC),
   [CO_CAPS] = COMBO(COM_CAPS, KC_CAPS),
   [CO_SEMI] = COMBO(COM_SEMI, KC_SCLN),
-  [CO_MDEL] = COMBO(COM_MDEL, KC_DEL),
   [CO_WDEL] = COMBO(COM_WDEL, KC_DEL),
   [CO_LANG] = COMBO_ACTION(COM_LANG),
   [CO_MIDCLK] = COMBO(COM_MIDCLK, KC_BTN3),
   [CO_SCROLL] = COMBO(COM_SCROLL, DRAG_SCROLL),
-  [CO_TO_MAC] = COMBO(COM_TO_MAC, DF(MAC)),
-  [CO_TO_WIN] = COMBO(COM_TO_WIN, DF(WINDOWS)),
   [NOLOCK] = COMBO_ACTION(COM_NOLOCK),
+  //USE 38 key combo : layer 0 _WINDOWS
+  [CO_LAYER] = COMBO_ACTION(COM_LAYER),
+  [CO_ESC] = COMBO(COM_ESC, KC_ESC),
+  [CO_TAB] = COMBO(COM_TAB, KC_TAB),
+  [CO_BSP] = COMBO(COM_BSP, KC_BSPC),
+  [CO_DEL] = COMBO(COM_DEL, KC_DEL),
+  [CO_RTN] = COMBO(COM_RTN, KC_ENT),
+
 };
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
@@ -456,6 +484,17 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
             }
             break;
 
+        case CO_LAYER:
+            if (pressed){
+                if (state == _MAC) {
+                    set_single_persistent_default_layer(_WINDOWS);
+                }
+                else if (state == _WINDOWS) {
+                    set_single_persistent_default_layer(_MAC);
+                }
+            }
+            break;
+
         case CO_LANG:
             if (pressed){
                 if (state == _MAC) {
@@ -468,7 +507,6 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
             break;
     }
 };
-
 
 void keyboard_pre_init_user(void) {
   // Set our LED pin as output
@@ -513,16 +551,16 @@ void housekeeping_task_user(void) {
     led_t led_usb_state = host_keyboard_led_state();
     //rgblight_setrgb_at(RGB_RED, 0);
     if (led_usb_state.caps_lock) {
-        rgblight_setrgb_at(0, 20, 0, 0);
-        rgblight_setrgb_at(0, 20, 0, 1);
+        rgblight_setrgb_at(0, 10, 0, 0);
+        rgblight_setrgb_at(0, 10, 0, 1);
     } else {
         rgblight_setrgb_at(0, 0, 0, 0);
         rgblight_setrgb_at(0, 0, 0, 1);
     }
 
     if (drag_scrolling) {
-        rgblight_setrgb_at(20, 0, 0, 0);
-        rgblight_setrgb_at(20, 0, 0, 1);
+        rgblight_setrgb_at(10, 0, 0, 0);
+        rgblight_setrgb_at(10, 0, 0, 1);
     } else {
         rgblight_setrgb_at(0, 0, 0, 0);
         rgblight_setrgb_at(0, 0, 0, 1);
@@ -538,56 +576,56 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_WINDOWS] = LAYOUT(
      KC_TAB,  WFNC_Q,  KC_W, KC_E,    KC_R,    KC_T,                                            KC_Y,      KC_U,    KC_I,    KC_O,   WFNC_P,  KC_BSPC,
-     KC_LCTL, MOU_A,   KC_S, KC_D,    LSFT_F,  KC_G,                                            KC_H,      RSFT_J,  KC_K,    KC_L,   NAV_QUO, KC_ENT,
+     KC_LSFT, MOU_A,   KC_S, KC_D,    LSFT_F,  KC_G,                                            KC_H,      RSFT_J,  KC_K,    KC_L,   NAV_QUO, KC_RSFT,
      KC_LSFT, HO_LSFT, KC_X, KC_C,    KC_V,    KC_B,    XXXXXXX, KC_WH_U,     KC_BTN1, KC_BTN2, KC_N,      KC_M,    KC_COMM, KC_DOT, HO_RSFT, KC_RSFT,
                              XXXXXXX, KC_LALT, KC_LCTL, WNUM_SP, KC_WH_D,     KC_BTN2, WNUM_SP, TD(TD_SP), KC_LGUI, XXXXXXX
     ),
 
     [_MAC] = LAYOUT(
      KC_TAB,  MFNC_Q,  KC_W, KC_E,    KC_R,    KC_T,                                            KC_Y,      KC_U,    KC_I,    KC_O,   MFNC_P,  KC_BSPC,
-     KC_LCTL, MOU_A,   KC_S, KC_D,    LSFT_F,  KC_G,                                            KC_H,      RSFT_J,  KC_K,    KC_L,   NAV_QUO, KC_ENT,
+     KC_LSFT, MOU_A,   KC_S, KC_D,    LSFT_F,  KC_G,                                            KC_H,      RSFT_J,  KC_K,    KC_L,   NAV_QUO, KC_RSFT,
      KC_LSFT, HO_LSFT, KC_X, KC_C,    KC_V,    KC_B,    XXXXXXX, KC_WH_U,     KC_BTN1, KC_BTN2, KC_N,      KC_M,    KC_COMM, KC_DOT, HO_RSFT, KC_RSFT,
                              XXXXXXX, KC_LALT, KC_LGUI, MNUM_SP, KC_WH_D,     KC_BTN2, WNUM_SP, TD(TD_SP), KC_LCTL, XXXXXXX
     ),
 
     [_NAV] = LAYOUT(
      KC_TAB,  CC_EXLM, CC_AT,   CC_HASH, KC_EQL,  TD(TD_LBK),                                         TD(TD_RBK), XXXXXXX, KC_UP,   XXXXXXX, XXXXXXX, KC_BSPC,
-     _______, CC_PERC, CC_AMPR, CC_ASTR, KC_SLSH, TD(TD_LPR),                                         TD(TD_RPR), KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, _______,
+     KC_LSFT, CC_PERC, CC_AMPR, CC_ASTR, KC_SLSH, TD(TD_LPR),                                         TD(TD_RPR), KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, KC_RSFT,
      KC_LSFT, NV_LSFT, CC_DLR,  CC_PLUS, KC_MINS, CC_PIPE,    _______, _______,     _______, _______, KC_BSLS,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_RSFT,
                                 _______, _______, _______,    _______, _______,     _______, _______, _______,    _______, XXXXXXX
     ),
 
     [_MOUSE] = LAYOUT(
      KC_TAB,  XXXXXXX, XXXXXXX, KC_WH_U, XXXXXXX, KC_PGUP,                                            KC_HOME, XXXXXXX, KC_MS_U, XXXXXXX, XXXXXXX, KC_BSPC,
-     _______, XXXXXXX, KC_WH_L, KC_WH_D, KC_WH_R, KC_PGDN,                                            KC_END,  KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, _______,
+     KC_LSFT, XXXXXXX, KC_WH_L, KC_WH_D, KC_WH_R, KC_PGDN,                                            KC_END,  KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, KC_RSFT,
      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    _______, _______,     _______, _______, KC_BSLS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_RSFT,
                                 _______, _______, _______,    _______, _______,     _______, _______, _______,    _______, XXXXXXX
     ),
 
     [_M_FNC] = LAYOUT(
      KC_TAB,  XXXXXXX, KC_VOLU, XXXXXXX, LGUI(KC_LBRC), LGUI(KC_RBRC),                                              LCTL(KC_UP),  KC_F9,   KC_F10, KC_F11, KC_F12, KC_BSPC,
-     _______, XXXXXXX, KC_VOLD, XXXXXXX, XXXXXXX,       LGUI(KC_GRV),                                               LGUI(KC_GRV), KC_F5,   KC_F6,  KC_F7,  KC_F8,  _______,
+     KC_LSFT, XXXXXXX, KC_VOLD, XXXXXXX, XXXXXXX,       LGUI(KC_GRV),                                               LGUI(KC_GRV), KC_F5,   KC_F6,  KC_F7,  KC_F8,  KC_RSFT,
      KC_LSFT, XXXXXXX, KC_MUTE, XXXXXXX, XXXXXXX,       LGUI(LALT(KC_ESC)), _______, _______,     _______, _______, XXXXXXX,      KC_F1,   KC_F2,  KC_F3,  KC_F4,  KC_RSFT,
                                 _______, _______,       _______,            _______, _______,     _______, _______, _______,      _______, XXXXXXX
     ),
 
     [_W_FNC] = LAYOUT(
      KC_TAB,  XXXXXXX, KC_VOLU, XXXXXXX, LALT(KC_LEFT), LALT(KC_RGHT),                                              LGUI(KC_TAB), KC_F9,   KC_F10, KC_F11, KC_F12, KC_BSPC,
-     _______, XXXXXXX, KC_VOLD, XXXXXXX, XXXXXXX,       LALT(KC_TAB),                                               LALT(KC_TAB), KC_F5,   KC_F6,  KC_F7,  KC_F8,  _______,
+     KC_LSFT, XXXXXXX, KC_VOLD, XXXXXXX, XXXXXXX,       LALT(KC_TAB),                                               LALT(KC_TAB), KC_F5,   KC_F6,  KC_F7,  KC_F8,  KC_RSFT,
      KC_LSFT, XXXXXXX, KC_MUTE, XXXXXXX, XXXXXXX,       LCTL(LSFT(KC_ESC)), _______, _______,     _______, _______, XXXXXXX,      KC_F1,   KC_F2,  KC_F3,  KC_F4,  KC_RSFT,
                                 _______, _______,       _______,            _______, _______,     _______, _______, _______,      _______, XXXXXXX
     ),
 
     [_M_NUM] = LAYOUT(
      KC_TAB,  CC_EXLM, CC_AT,   CC_HASH, CC_DLR,  CC_PERC,                                         CC_CIRC, CC_AMPR, CC_ASTR, CC_LPRN, CC_RPRN, KC_BSPC,
-     _______, KC_1,    KC_2,    KC_3 ,   KC_4,    KC_5,                                            KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______ ,
+     KC_LSFT, KC_1,    KC_2,    KC_3 ,   KC_4,    KC_5,                                            KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_RSFT ,
      KC_LSFT, KC_GRV,  CC_TILD, CC_PLUS, KC_MINS, CC_ASTR, KC_SLSH, _______,     _______, _______, KC_BSLS, KC_EQL,  KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
                                 _______, _______, _______, _______, _______,     _______, _______, _______, _______, XXXXXXX
     ),
 
     [_W_NUM] = LAYOUT(
      KC_TAB,  CC_EXLM, CC_AT,   CC_HASH, CC_DLR,  CC_PERC,                                         CC_CIRC, CC_AMPR, CC_ASTR, CC_LPRN, CC_RPRN, KC_BSPC,
-     _______, KC_1,    KC_2,    KC_3 ,   KC_4,    KC_5,                                            KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______ ,
+     KC_LSFT, KC_1,    KC_2,    KC_3 ,   KC_4,    KC_5,                                            KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_RSFT ,
      KC_LSFT, KC_GRV,  CC_TILD, CC_PLUS, KC_MINS, CC_ASTR, KC_SLSH, _______,     _______, _______, KC_BSLS, KC_EQL,  KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
                                 _______, _______, _______, _______, _______,     _______, _______, _______, _______, XXXXXXX
     ),
