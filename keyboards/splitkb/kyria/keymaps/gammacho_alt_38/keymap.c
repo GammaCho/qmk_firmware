@@ -140,19 +140,19 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case NV_LSFT:
             return 130;
         case MFNC_Q:
-            return 130;
+            return 150;
         case MFNC_P:
-            return 130;
+            return 150;
         case MOU_A:
-            return 130;
+            return 150;
         case NAV_QUO:
-            return 130;
+            return 150;
         case MNUM_SP:
             return 130;
         case WFNC_Q:
-            return 130;
+            return 150;
         case WFNC_P:
-            return 130;
+            return 150;
         case WNUM_SP:
             return 130;
         default:
