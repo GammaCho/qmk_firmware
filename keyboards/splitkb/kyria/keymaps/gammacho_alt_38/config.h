@@ -27,10 +27,6 @@
 // Lets you roll mod-tap keys : NO LONGER USED
 //#define IGNORE_MOD_TAP_INTERRUPT
 
-#define SPLIT_POINTING_ENABLE
-#define POINTING_DEVICE_ROTATION_270
-#define POINTING_DEVICE_GESTURES_CURSOR_GLIDE_ENABLE
-#define POINTING_DEVICE_GESTURES_SCROLL_ENABLE
 /*
  * For some reason yet to be debugged, POINTING_DEVICE_RIGHT gets sporadic false movements when the two halves are connected.
  * Right half works fine on its own with POINTING_DEVICE_RIGHT.
@@ -40,15 +36,17 @@
 //#define POINTING_DEVICE_RIGHT
 //qmk compile -e CONVERT_TO=liatris -kb splitkb/kyria/rev3
 //#define POINTING_DEVICE_COMBINED
+#define SPLIT_POINTING_ENABLE
 #define CIRQUE_PINNACLE_ADDR 0x2A
 #define CIRQUE_PINNACLE_CURVED_OVERLAY
 //#define CIRQUE_PINNACLE_DISABLE_SMOOTHING
 #define CIRQUE_PINNACLE_DISABLE_TAP
 #define CIRQUE_PINNACLE_POSITION_MODE  CIRQUE_PINNACLE_ABSOLUTE_MODE
 #define CIRQUE_PINNACLE_ATTENUATION EXTREG__TRACK_ADCCONFIG__ADC_ATTENUATE_2X
-//#define CIRQUE_PINNACLE_TAP_ENABLE
-//#define CIRQUE_PINNACLE_ENABLE_CURSOR_GLIDE
-//#define CIRQUE_PINNACLE_ENABLE_CIRCULAR_SCROLL
+#define POINTING_DEVICE_ROTATION_270
+#define POINTING_DEVICE_GESTURES_CURSOR_GLIDE_ENABLE
+#define POINTING_DEVICE_GESTURES_SCROLL_ENABLE
+
 // Pointing device is on the right split.
 #define POINTING_DEVICE_RIGHT
 // Limits the frequency that the sensor is polled for motion.
@@ -61,6 +59,12 @@
 #define TAPPING_TERM_PER_KEY
 //#define TAP_CODE_DELAY
 
+// Mouse keys
+#define MOUSEKEY_DELAY          0
+#define MOUSEKEY_INTERVAL       20
+#define MOUSEKEY_MAX_SPEED      3
+#define MOUSEKEY_TIME_TO_MAX    5
+#define MOUSEKEY_WHEEL_DELAY    0
 
 // Split OnBoard Controller LED Enable
 //#define MOD_TAP_INTERUPT
