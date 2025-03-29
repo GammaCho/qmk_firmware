@@ -432,6 +432,9 @@ enum combos {
     CO_BSP,
     CO_DEL,
     CO_RTN,
+    CO_L_LCLK,
+    CO_L_RCLK,
+    CO_L_MCLK,
 };
 
 const uint16_t PROGMEM COM_WESC[] = {KC_TAB, WFNC_Q, COMBO_END};
@@ -449,6 +452,11 @@ const uint16_t PROGMEM COM_TAB[] = {KC_W, KC_E, KC_R, COMBO_END};
 const uint16_t PROGMEM COM_BSP[] = {KC_U, KC_I, COMBO_END};
 const uint16_t PROGMEM COM_DEL[] = {KC_U, KC_I, KC_O, COMBO_END};
 const uint16_t PROGMEM COM_RTN[] = {RSFT_J, KC_K, KC_L, COMBO_END};
+//ADD LEFT SIDE COMBO MOUSE KEY
+const uint16_t PROGMEM COM_L_LCLK[] = {LSFT_F, KC_G, COMBO_END};
+const uint16_t PROGMEM COM_L_RCLK[] = {KC_R, KC_T, COMBO_END};
+const uint16_t PROGMEM COM_L_MCLK[] = {KC_V, KC_B, COMBO_END};
+
 
 combo_t key_combos[] = {
   [CO_WESC] = COMBO(COM_WESC, KC_ESC),
@@ -466,6 +474,9 @@ combo_t key_combos[] = {
   [CO_BSP] = COMBO(COM_BSP, KC_BSPC),
   [CO_DEL] = COMBO(COM_DEL, KC_DEL),
   [CO_RTN] = COMBO(COM_RTN, KC_ENT),
+  [CO_L_LCLK] = COMBO(COM_L_LCLK, KC_BTN1),
+  [CO_L_RCLK] = COMBO(COM_L_RCLK, KC_BTN2),
+  [CO_L_MCLK] = COMBO(COM_L_MCLK, KC_BTN3),
 
 };
 
