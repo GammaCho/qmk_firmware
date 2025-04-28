@@ -607,10 +607,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_MOUSE] = LAYOUT(
-     KC_TAB,  XXXXXXX, XXXXXXX, KC_WH_U, XXXXXXX, KC_PGUP,                                                KC_HOME, XXXXXXX, KC_MS_U, XXXXXXX, XXXXXXX, KC_BSPC,
-     KC_LSFT, XXXXXXX, KC_WH_L, KC_WH_D, KC_WH_R, KC_PGDN,                                                KC_END,  KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, KC_RSFT,
-     KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______,     _______, _______, KC_BSLS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_RSFT,
-                                XXXXXXX, KC_LEFT, KC_RGHT, _______, _______,     _______, _______, _______, _______, XXXXXXX
+     KC_TAB,  XXXXXXX, XXXXXXX, KC_WH_U, XXXXXXX, KC_PGUP,                                         KC_HOME, XXXXXXX, KC_MS_U, XXXXXXX, XXXXXXX, KC_BSPC,
+     KC_LSFT, XXXXXXX, KC_WH_L, KC_WH_D, KC_WH_R, KC_PGDN,                                         KC_END,  KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, KC_RSFT,
+     KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT, _______, _______,     _______, _______, KC_BSLS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_RSFT,
+                                XXXXXXX, KC_LEFT, KC_RGHT, _______, XXXXXXX,     XXXXXXX, _______, _______, _______, XXXXXXX
     ),
 
     [_M_FNC] = LAYOUT(

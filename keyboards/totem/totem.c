@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "quantum.h"
+#include "totem.h"
 
 
 #ifdef SWAP_HANDS_ENABLE
