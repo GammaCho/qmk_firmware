@@ -1,6 +1,6 @@
 {
-    "keyboard_name": "TOTEM", 
-    "url": "https://github.com/GEIGEIGEIST/TOTEM", 
+    "keyboard_name": "TOTEM",
+    "url": "https://github.com/GEIGEIGEIST/TOTEM",
     "manufacturer": "GEIST",
     "usb": {
         "vid": "0x3A3C",
