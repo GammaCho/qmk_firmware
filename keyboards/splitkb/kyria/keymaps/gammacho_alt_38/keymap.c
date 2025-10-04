@@ -588,15 +588,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_WINDOWS] = LAYOUT(
      KC_TAB,  WFNC_Q,  KC_W, KC_E,    KC_R,    KC_T,                                            KC_Y,      KC_U,    KC_I,    KC_O,   WFNC_P,  KC_BSPC,
      KC_LSFT, MOU_A,   KC_S, KC_D,    LSFT_F,  KC_G,                                            KC_H,      RSFT_J,  KC_K,    KC_L,   NAV_QUO, KC_RSFT,
-     KC_LSFT, HO_LSFT, KC_X, KC_C,    KC_V,    KC_B,    XXXXXXX, KC_WH_U,     MS_BTN1, MS_BTN2, KC_N,      KC_M,    KC_COMM, KC_DOT, HO_RSFT, KC_RSFT,
-                             XXXXXXX, KC_LALT, KC_LCTL, WNUM_SP, KC_WH_D,     MS_BTN2, WNUM_SP, TD(TD_SP), KC_LGUI, XXXXXXX
+     KC_LSFT, HO_LSFT, KC_X, KC_C,    KC_V,    KC_B,    XXXXXXX, MS_WHLU,     MS_BTN1, MS_BTN2, KC_N,      KC_M,    KC_COMM, KC_DOT, HO_RSFT, KC_RSFT,
+                             XXXXXXX, KC_LALT, KC_LCTL, WNUM_SP, MS_WHLD,     MS_BTN2, WNUM_SP, TD(TD_SP), KC_LGUI, XXXXXXX
     ),
 
     [_MAC] = LAYOUT(
      KC_TAB,  MFNC_Q,  KC_W, KC_E,    KC_R,    KC_T,                                            KC_Y,      KC_U,    KC_I,    KC_O,   MFNC_P,  KC_BSPC,
      KC_LSFT, MOU_A,   KC_S, KC_D,    LSFT_F,  KC_G,                                            KC_H,      RSFT_J,  KC_K,    KC_L,   NAV_QUO, KC_RSFT,
-     KC_LSFT, HO_LSFT, KC_X, KC_C,    KC_V,    KC_B,    XXXXXXX, KC_WH_U,     MS_BTN1, MS_BTN2, KC_N,      KC_M,    KC_COMM, KC_DOT, HO_RSFT, KC_RSFT,
-                             XXXXXXX, KC_LALT, KC_LGUI, MNUM_SP, KC_WH_D,     MS_BTN2, WNUM_SP, TD(TD_SP), KC_LCTL, XXXXXXX
+     KC_LSFT, HO_LSFT, KC_X, KC_C,    KC_V,    KC_B,    XXXXXXX, MS_WHLU,     MS_BTN1, MS_BTN2, KC_N,      KC_M,    KC_COMM, KC_DOT, HO_RSFT, KC_RSFT,
+                             XXXXXXX, KC_LALT, KC_LGUI, MNUM_SP, MS_WHLD,     MS_BTN2, WNUM_SP, TD(TD_SP), KC_LCTL, XXXXXXX
     ),
 
     [_NAV] = LAYOUT(
@@ -607,8 +607,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_MOUSE] = LAYOUT(
-     KC_TAB,  XXXXXXX, XXXXXXX, KC_WH_U, XXXXXXX, KC_PGUP,                                         KC_HOME, XXXXXXX, KC_MS_U, XXXXXXX, XXXXXXX, KC_BSPC,
-     KC_LSFT, XXXXXXX, KC_WH_L, KC_WH_D, KC_WH_R, KC_PGDN,                                         KC_END,  KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, KC_RSFT,
+     KC_TAB,  XXXXXXX, XXXXXXX, MS_WHLU, XXXXXXX, KC_PGUP,                                         KC_HOME, XXXXXXX, KC_MS_U, XXXXXXX, XXXXXXX, KC_BSPC,
+     KC_LSFT, XXXXXXX, MS_WHLL, MS_WHLD, MS_WHLR, KC_PGDN,                                         KC_END,  KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, KC_RSFT,
      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_RBT,  _______, _______,     _______, _______, KC_BSLS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_RSFT,
                                 XXXXXXX, KC_LEFT, KC_RGHT, _______, XXXXXXX,     XXXXXXX, _______, _______, _______, XXXXXXX
     ),
