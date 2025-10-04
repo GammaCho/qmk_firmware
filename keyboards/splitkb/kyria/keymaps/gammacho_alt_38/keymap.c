@@ -607,8 +607,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_MOUSE] = LAYOUT(
-     KC_TAB,  XXXXXXX, XXXXXXX, MS_WHLU, XXXXXXX, KC_PGUP,                                         KC_HOME, XXXXXXX, KC_MS_U, XXXXXXX, XXXXXXX, KC_BSPC,
-     KC_LSFT, XXXXXXX, MS_WHLL, MS_WHLD, MS_WHLR, KC_PGDN,                                         KC_END,  KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, KC_RSFT,
+     KC_TAB,  XXXXXXX, XXXXXXX, MS_WHLU, XXXXXXX, KC_PGUP,                                         KC_HOME, XXXXXXX, MS_UP,   XXXXXXX, XXXXXXX, KC_BSPC,
+     KC_LSFT, XXXXXXX, MS_WHLL, MS_WHLD, MS_WHLR, KC_PGDN,                                         KC_END,  MS_LEFT, MS_DOWN, MS_RGHT, XXXXXXX, KC_RSFT,
      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_RBT,  _______, _______,     _______, _______, KC_BSLS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_RSFT,
                                 XXXXXXX, KC_LEFT, KC_RGHT, _______, XXXXXXX,     XXXXXXX, _______, _______, _______, XXXXXXX
     ),
