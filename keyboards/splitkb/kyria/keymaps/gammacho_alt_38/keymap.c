@@ -188,13 +188,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 drag_scrolling ^= 1;
             }
             break;
-        case KC_BTN1:
+        case MS_BTN1:
             if (record->event.pressed) {
                 // this toggles the state each time you tap it
                 drag_scrolling = false;
             }
             break;
-        case KC_BTN2:
+        case MS_BTN2:
             if (record->event.pressed) {
                 // this toggles the state each time you tap it
                 drag_scrolling = false;
@@ -442,7 +442,7 @@ const uint16_t PROGMEM COM_CAPS[] = {KC_D, LSFT_F, COMBO_END};
 const uint16_t PROGMEM COM_SEMI[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM COM_WDEL[] = {WFNC_P, KC_BSPC, COMBO_END};
 const uint16_t PROGMEM COM_LANG[] = {RSFT_J, KC_K, COMBO_END};
-const uint16_t PROGMEM COM_MIDCLK[] = {KC_BTN1, KC_BTN2, COMBO_END};
+const uint16_t PROGMEM COM_MIDCLK[] = {MS_BTN1, MS_BTN2, COMBO_END};
 const uint16_t PROGMEM COM_SCROLL[] = {KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM COM_NOLOCK[] = {KC_M, KC_COMM, COMBO_END};
 //USE 38 key combo : layer 0 _WINDOWS
@@ -464,7 +464,7 @@ combo_t key_combos[] = {
   [CO_SEMI] = COMBO(COM_SEMI, KC_SCLN),
   [CO_WDEL] = COMBO(COM_WDEL, KC_DEL),
   [CO_LANG] = COMBO_ACTION(COM_LANG),
-  [CO_MIDCLK] = COMBO(COM_MIDCLK, KC_BTN3),
+  [CO_MIDCLK] = COMBO(COM_MIDCLK, MS_BTN3),
   [CO_SCROLL] = COMBO(COM_SCROLL, DRAG_SCROLL),
   [NOLOCK] = COMBO_ACTION(COM_NOLOCK),
   //USE 38 key combo : layer 0 _WINDOWS
@@ -474,9 +474,9 @@ combo_t key_combos[] = {
   [CO_BSP] = COMBO(COM_BSP, KC_BSPC),
   [CO_DEL] = COMBO(COM_DEL, KC_DEL),
   [CO_RTN] = COMBO(COM_RTN, KC_ENT),
-  [CO_L_LCLK] = COMBO(COM_L_LCLK, KC_BTN1),
-  [CO_L_RCLK] = COMBO(COM_L_RCLK, KC_BTN2),
-  [CO_L_MCLK] = COMBO(COM_L_MCLK, KC_BTN3),
+  [CO_L_LCLK] = COMBO(COM_L_LCLK, MS_BTN1),
+  [CO_L_RCLK] = COMBO(COM_L_RCLK, MS_BTN2),
+  [CO_L_MCLK] = COMBO(COM_L_MCLK, MS_BTN3),
 
 };
 
@@ -588,15 +588,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_WINDOWS] = LAYOUT(
      KC_TAB,  WFNC_Q,  KC_W, KC_E,    KC_R,    KC_T,                                            KC_Y,      KC_U,    KC_I,    KC_O,   WFNC_P,  KC_BSPC,
      KC_LSFT, MOU_A,   KC_S, KC_D,    LSFT_F,  KC_G,                                            KC_H,      RSFT_J,  KC_K,    KC_L,   NAV_QUO, KC_RSFT,
-     KC_LSFT, HO_LSFT, KC_X, KC_C,    KC_V,    KC_B,    XXXXXXX, KC_WH_U,     KC_BTN1, KC_BTN2, KC_N,      KC_M,    KC_COMM, KC_DOT, HO_RSFT, KC_RSFT,
-                             XXXXXXX, KC_LALT, KC_LCTL, WNUM_SP, KC_WH_D,     KC_BTN2, WNUM_SP, TD(TD_SP), KC_LGUI, XXXXXXX
+     KC_LSFT, HO_LSFT, KC_X, KC_C,    KC_V,    KC_B,    XXXXXXX, KC_WH_U,     MS_BTN1, MS_BTN2, KC_N,      KC_M,    KC_COMM, KC_DOT, HO_RSFT, KC_RSFT,
+                             XXXXXXX, KC_LALT, KC_LCTL, WNUM_SP, KC_WH_D,     MS_BTN2, WNUM_SP, TD(TD_SP), KC_LGUI, XXXXXXX
     ),
 
     [_MAC] = LAYOUT(
      KC_TAB,  MFNC_Q,  KC_W, KC_E,    KC_R,    KC_T,                                            KC_Y,      KC_U,    KC_I,    KC_O,   MFNC_P,  KC_BSPC,
      KC_LSFT, MOU_A,   KC_S, KC_D,    LSFT_F,  KC_G,                                            KC_H,      RSFT_J,  KC_K,    KC_L,   NAV_QUO, KC_RSFT,
-     KC_LSFT, HO_LSFT, KC_X, KC_C,    KC_V,    KC_B,    XXXXXXX, KC_WH_U,     KC_BTN1, KC_BTN2, KC_N,      KC_M,    KC_COMM, KC_DOT, HO_RSFT, KC_RSFT,
-                             XXXXXXX, KC_LALT, KC_LGUI, MNUM_SP, KC_WH_D,     KC_BTN2, WNUM_SP, TD(TD_SP), KC_LCTL, XXXXXXX
+     KC_LSFT, HO_LSFT, KC_X, KC_C,    KC_V,    KC_B,    XXXXXXX, KC_WH_U,     MS_BTN1, MS_BTN2, KC_N,      KC_M,    KC_COMM, KC_DOT, HO_RSFT, KC_RSFT,
+                             XXXXXXX, KC_LALT, KC_LGUI, MNUM_SP, KC_WH_D,     MS_BTN2, WNUM_SP, TD(TD_SP), KC_LCTL, XXXXXXX
     ),
 
     [_NAV] = LAYOUT(
