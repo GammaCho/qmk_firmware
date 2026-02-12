@@ -468,6 +468,17 @@ enum combos {
     CO_L_LCLK,
     CO_L_RCLK,
     CO_L_MCLK,
+    //ADD NEW COMBOS
+    CO_E, //E
+    CO_D, //D
+    CO_C, //C
+    CO_TB, //TAB
+    CO_EC, //ESC
+    CO_CP, //CAPS
+    CO_PL, //+
+    CO_AS, //*
+    CO_HS, //#
+    CO_3   //3
 };
 
 const uint16_t PROGMEM COM_WESC[] = {KC_TAB, WFNC_Q, COMBO_END};
@@ -489,7 +500,17 @@ const uint16_t PROGMEM COM_RTN[] = {RSFT_J, KC_K, KC_L, COMBO_END};
 const uint16_t PROGMEM COM_L_LCLK[] = {LSFT_F, KC_G, COMBO_END};
 const uint16_t PROGMEM COM_L_RCLK[] = {KC_R, KC_T, COMBO_END};
 const uint16_t PROGMEM COM_L_MCLK[] = {KC_V, KC_B, COMBO_END};
-
+//ADD NEW COMBO
+const uint16_t PROGMEM COM_E[] = {KC_W, KC_R, COMBO_END};
+const uint16_t PROGMEM COM_D[] = {KC_S, KC_F, COMBO_END};
+const uint16_t PROGMEM COM_C[] = {KC_X, KC_V, COMBO_END};
+const uint16_t PROGMEM COM_TB[] = {WFNC_Q, KC_W, KC_R, COMBO_END};
+const uint16_t PROGMEM COM_EC[] = {MOU_A, KC_S, KC_F, COMBO_END};
+const uint16_t PROGMEM COM_CP[] = {HO_LSFT, KC_X, KC_V, COMBO_END};
+const uint16_t PROGMEM COM_PL[] = {KC_X, KC_V, COMBO_END};
+const uint16_t PROGMEM COM_AS[] = {KC_S, KC_F, COMBO_END};
+const uint16_t PROGMEM COM_HS[] = {KC_W, KC_R, COMBO_END};
+const uint16_t PROGMEM COM_ 3[] = {KC_S, KC_F, COMBO_END};
 
 combo_t key_combos[] = {
   [CO_WESC] = COMBO(COM_WESC, KC_ESC),
@@ -510,8 +531,66 @@ combo_t key_combos[] = {
   [CO_L_LCLK] = COMBO(COM_L_LCLK, MS_BTN1),
   [CO_L_RCLK] = COMBO(COM_L_RCLK, MS_BTN2),
   [CO_L_MCLK] = COMBO(COM_L_MCLK, MS_BTN3),
+  //ADD NEW COMBO
+  [CO_E] = COMBO(COM_E, KC_E),
+  [CO_D] = COMBO(COM_D, KC_D),
+  [CO_C] = COMBO(COM_C, KC_C),
+  [CO_TB] = COMBO(COM_TB, KC_TAB),
+  [CO_EC] = COMBO(COM_EC, KC_ESC),
+  [CO_CP] = COMBO(COM_CP, KC_CAPS),
+  [CO_PL] = COMBO(COM_PL, CC_PLUS),
+  [CO_AS] = COMBO(COM_AS, CC_ASTR),
+  [CO_HS] = COMBO(COM_HS, CC_HASH),
+  [CO_3] = COMBO(COM_3, KC_3)
 
-};
+
+bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
+    /* Disable combo `SOME_COMBO` on layer `_LAYER_A` */
+    switch (combo_index) {
+        case CO_E:
+            if (layer_state_is(_WINDOWS) || layer_state_is(_MAC)) {
+                return true;
+            }
+        case CO_D:
+            if (layer_state_is(_WINDOWS) || layer_state_is(_MAC)) {
+                return true;
+            }
+        case CO_C:
+            if (layer_state_is(_WINDOWS) || layer_state_is(_MAC)) {
+                return true;
+            }
+        case CO_TB:
+            if (layer_state_is(_WINDOWS) || layer_state_is(_MAC)) {
+                return true;
+            }
+        case CO_EC:
+            if (layer_state_is(_WINDOWS) || layer_state_is(_MAC)) {
+                return true;
+            }
+        case CO_CP:
+            if (layer_state_is(_WINDOWS) || layer_state_is(_MAC)) {
+                return true;
+            }
+        case CO_PL:
+            if (layer_state_is(_NAV)) {
+                return true;
+            }
+        case CO_AS:
+            if (layer_state_is(_NAV)) {
+                return true;
+            }
+        case CO_HS:
+            if (layer_state_is(_NAV) || layer_state_is(_W_NUM) || layer_state_is(_M_NUM)) {
+                return true;
+            }
+        case CO_3:
+            if (layer_state_is(_W_NUM) || layer_state_is(_M_NUM)) {
+                return true;
+            }
+    }
+
+    return false;
+}
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
     led_t led_usb_state = host_keyboard_led_state();
