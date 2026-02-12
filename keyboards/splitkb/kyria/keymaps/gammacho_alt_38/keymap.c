@@ -98,31 +98,64 @@ int shifted_key_delay_ms = 30;
 bool drag_scrolling = false;
 bool ring_scrolling = false;
 
-// Modify these values to adjust the scrolling speed
-#define SCROLL_DIVISOR_V 180.0
-
-// Variables to store accumulated scroll values
-float scroll_accumulated_v = 0;
-
-// Function to handle mouse reports and perform drag scrolling
-report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
-    // Check if drag scrolling is active
+static void pointing_device_task_dilemma(report_mouse_t* mouse_report) {
+    static int16_t scroll_buffer_x = 0;
+    static int16_t scroll_buffer_y = 0;
     if (drag_scrolling) {
-        // Calculate and accumulate scroll values based on mouse movement and divisors
-        scroll_accumulated_v -= (float)mouse_report.y / SCROLL_DIVISOR_V;
+        scroll_buffer_x -= mouse_report->x;
+        scroll_buffer_y -= mouse_report->y;
 
-        // Assign integer parts of accumulated scroll values to the mouse report
-        mouse_report.v = (int8_t)scroll_accumulated_v;
-        //int8_t
-        // Update accumulated scroll values by subtracting the integer parts
-        scroll_accumulated_v -= (int8_t)scroll_accumulated_v;
-
-        // Clear the X and Y values of the mouse report
-        mouse_report.x = 0;
-        mouse_report.y = 0;
+    #ifdef POINTING_DEVICE_HIRES_SCROLL_ENABLE
+        mouse_report->h = 0;
+        mouse_report->v = mouse_report->y;
+        mouse_report->x = 0;
+        mouse_report->y = 0;
+    #else
+        mouse_report->x = 0;
+        mouse_report->y = 0;
+        if (abs(scroll_buffer_x) > 6) {
+            mouse_report->h = scroll_buffer_x > 0 ? 1 : -1;
+            scroll_buffer_x = 0;
+        }
+        if (abs(scroll_buffer_y) > 6) {
+            mouse_report->v = scroll_buffer_y > 0 ? 1 : -1;
+            scroll_buffer_y = 0;
+        }
+    #endif
     }
-  return mouse_report;
 }
+
+report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
+    pointing_device_task_dilemma(&mouse_report);
+    mouse_report = pointing_device_task_user(mouse_report);
+    return mouse_report;
+}
+
+// // Modify these values to adjust the scrolling speed
+// #define SCROLL_DIVISOR_V 180.0
+
+// // Variables to store accumulated scroll values
+// float scroll_accumulated_v = 0;
+
+// // Function to handle mouse reports and perform drag scrolling
+// report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
+//     // Check if drag scrolling is active
+//     if (drag_scrolling) {
+//         // Calculate and accumulate scroll values based on mouse movement and divisors
+//         scroll_accumulated_v -= (float)mouse_report.y / SCROLL_DIVISOR_V;
+
+//         // Assign integer parts of accumulated scroll values to the mouse report
+//         mouse_report.v = (int8_t)scroll_accumulated_v;
+//         //int8_t
+//         // Update accumulated scroll values by subtracting the integer parts
+//         scroll_accumulated_v -= (int8_t)scroll_accumulated_v;
+
+//         // Clear the X and Y values of the mouse report
+//         mouse_report.x = 0;
+//         mouse_report.y = 0;
+//     }
+//     return mouse_report;
+// }
 
 void shifted_key_delay(int keycode) {
     register_code(KC_LSFT);
