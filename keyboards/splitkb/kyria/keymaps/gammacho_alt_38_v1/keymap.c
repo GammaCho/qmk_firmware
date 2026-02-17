@@ -502,15 +502,15 @@ const uint16_t PROGMEM COM_L_RCLK[] = {KC_R, KC_T, COMBO_END};
 const uint16_t PROGMEM COM_L_MCLK[] = {KC_V, KC_B, COMBO_END};
 //ADD NEW COMBO
 const uint16_t PROGMEM COM_E[] = {KC_W, KC_R, COMBO_END};
-const uint16_t PROGMEM COM_D[] = {KC_S, KC_F, COMBO_END};
+const uint16_t PROGMEM COM_D[] = {KC_S, LSFT_F, COMBO_END};
 const uint16_t PROGMEM COM_C[] = {KC_X, KC_V, COMBO_END};
 const uint16_t PROGMEM COM_TB[] = {WFNC_Q, KC_W, KC_R, COMBO_END};
-const uint16_t PROGMEM COM_EC[] = {MOU_A, KC_S, KC_F, COMBO_END};
+const uint16_t PROGMEM COM_EC[] = {MOU_A, KC_S, LSFT_F, COMBO_END};
 const uint16_t PROGMEM COM_CP[] = {HO_LSFT, KC_X, KC_V, COMBO_END};
-const uint16_t PROGMEM COM_PL[] = {KC_X, KC_V, COMBO_END};
-const uint16_t PROGMEM COM_AS[] = {KC_S, KC_F, COMBO_END};
-const uint16_t PROGMEM COM_HS[] = {KC_W, KC_R, COMBO_END};
-const uint16_t PROGMEM COM_ 3[] = {KC_S, KC_F, COMBO_END};
+const uint16_t PROGMEM COM_PL[] = {CC_DLR, KC_MINS, COMBO_END};
+const uint16_t PROGMEM COM_AS[] = {CC_AMPR, KC_SLSH, COMBO_END};
+const uint16_t PROGMEM COM_HS[] = {CC_AT, CC_DLR, COMBO_END};
+const uint16_t PROGMEM COM_3[] = {KC_2, KC_4, COMBO_END};ㄹ
 
 combo_t key_combos[] = {
   [CO_WESC] = COMBO(COM_WESC, KC_ESC),
@@ -542,7 +542,7 @@ combo_t key_combos[] = {
   [CO_AS] = COMBO(COM_AS, CC_ASTR),
   [CO_HS] = COMBO(COM_HS, CC_HASH),
   [CO_3] = COMBO(COM_3, KC_3)
-
+};
 
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
     /* Disable combo `SOME_COMBO` on layer `_LAYER_A` */
@@ -590,7 +590,7 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
     }
 
     return false;
-}
+};
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
     led_t led_usb_state = host_keyboard_led_state();
