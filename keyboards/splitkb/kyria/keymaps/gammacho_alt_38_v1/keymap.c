@@ -510,7 +510,7 @@ const uint16_t PROGMEM COM_CP[] = {HO_LSFT, KC_X, KC_V, COMBO_END};
 const uint16_t PROGMEM COM_PL[] = {CC_DLR, KC_MINS, COMBO_END};
 const uint16_t PROGMEM COM_AS[] = {CC_AMPR, KC_SLSH, COMBO_END};
 const uint16_t PROGMEM COM_HS[] = {CC_AT, CC_DLR, COMBO_END};
-const uint16_t PROGMEM COM_3[] = {KC_2, KC_4, COMBO_END};ㄹ
+const uint16_t PROGMEM COM_3[] = {KC_2, KC_4, COMBO_END};
 
 combo_t key_combos[] = {
   [CO_WESC] = COMBO(COM_WESC, KC_ESC),
